@@ -5,7 +5,9 @@ python:
   - '3.4'
 install:
   - pip install flake8 nose>=1.3.0
+  - pip install -r requirements/doc.txt
   - python setup.py install
 script:
   - flake8 .
   - python setup.py nosetests
+  - cd doc && make html
