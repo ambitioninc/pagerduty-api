@@ -10,4 +10,4 @@ install:
 script:
   - flake8 .
   - python setup.py nosetests
-  - cd doc && make html
+  - cd docs && make html
