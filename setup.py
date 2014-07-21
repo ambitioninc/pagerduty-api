@@ -20,23 +20,25 @@ def get_version():
 setup(
     name='pagerduty-api',
     version=get_version(),
-    description='',
+    description='pagerduty-api is a package for easily interacting with PagerDuty\'s API.',
     long_description=open('README.rst').read(),
     url='https://github.com/ambitioninc/pagerduty-api',
     author='Micah Hausler',
     author_email='opensource@ambition.com',
-    keywords='',
+    keywords='pagerduty, api, requests',
     packages=find_packages(),
     classifiers=[
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
     license='MIT',
-    install_requires=[],
+    install_requires=[
+        'requests>=2.0.0'
+    ],
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=[
