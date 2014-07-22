@@ -1,13 +1,13 @@
-.. _ref-pagerduty_api:
+.. _ref-code-documentation:
 
-Code documentation
+Code Documentation
 ==================
 
-pagerduty_api
-------------------
+Alert
+-----
 
 .. automodule:: pagerduty_api
-.. autoclass:: pagerduty_api.pagerduty_api
+.. autoclass:: pagerduty_api.Alert
     :members:
 
     .. automethod:: __init__
