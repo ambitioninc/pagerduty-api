@@ -1,5 +1,6 @@
 import logging
 
+import json
 import unittest
 from mock import patch
 import requests
@@ -54,7 +55,7 @@ class PagerDutyAlertTests(unittest.TestCase):
 
         # Assert we made one
         mock_post.assert_called_once_with(
-            data={
+            data=json.dumps({
                 'service_key': self.service_key,
                 'event_type': 'trigger',
                 'incident_key': self.incident_key,
@@ -62,10 +63,10 @@ class PagerDutyAlertTests(unittest.TestCase):
                 'client': 'apple_0033c42e190872c508666ab6acbbd2e7',
                 'client_url': 'https://apple.ambition.com',
                 'details': {'some_key': 'some_value'},
-                },
+            }),
             headers=self.alert.headers,
             url=self.alert.URL,
-            )
+        )
 
     @patch.object(requests, 'post')
     def test_acknowledge_success(self, mock_post):
@@ -81,16 +82,16 @@ class PagerDutyAlertTests(unittest.TestCase):
 
         # Assert we made one
         mock_post.assert_called_once_with(
-            data={
+            data=json.dumps({
                 'service_key': self.service_key,
                 'event_type': 'acknowledge',
                 'incident_key': self.incident_key,
                 'description': 'No data received',
                 'details': {'some_key': 'some_value'},
-                },
+            }),
             headers=self.alert.headers,
             url=self.alert.URL,
-            )
+        )
 
     @patch.object(requests, 'post')
     def test_acknowledge_raises_error(self, mock_post):
@@ -120,16 +121,16 @@ class PagerDutyAlertTests(unittest.TestCase):
 
         # Assert we made one
         mock_post.assert_called_once_with(
-            data={
+            data=json.dumps({
                 'service_key': self.service_key,
                 'event_type': 'resolve',
                 'incident_key': self.incident_key,
                 'description': 'No data received',
                 'details': {'some_key': 'some_value'},
-                },
+            }),
             headers=self.alert.headers,
             url=self.alert.URL,
-            )
+        )
 
     @patch.object(requests, 'post')
     def test_resolve_raises_error(self, mock_post):
