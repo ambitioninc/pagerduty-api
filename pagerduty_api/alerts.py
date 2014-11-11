@@ -1,4 +1,5 @@
 import hashlib
+import json
 import logging
 
 import requests
@@ -102,11 +103,7 @@ class Alert(Resource):
         }
         LOG.info('Triggering PagerDuty incident {0}'.format(incident_key))
 
-        response = requests.post(
-            url=self.URL,
-            data=data,
-            headers=self.headers
-        )
+        response = requests.post(url=self.URL, data=json.dumps(data), headers=self.headers)
         return response.json()
 
     def acknowledge(self, incident_key=None, description=None, details=None):
@@ -156,11 +153,7 @@ class Alert(Resource):
         }
         LOG.info('Acknowledging PagerDuty incident {0}'.format(incident_key))
 
-        response = requests.post(
-            url=self.URL,
-            data=data,
-            headers=self.headers
-        )
+        response = requests.post(url=self.URL, data=json.dumps(data), headers=self.headers)
         return response.json()
 
     def resolve(self, incident_key=None, description=None, details=None):
@@ -210,9 +203,5 @@ class Alert(Resource):
         }
         LOG.info('Resolving PagerDuty incident {0}'.format(incident_key))
 
-        response = requests.post(
-            url=self.URL,
-            data=data,
-            headers=self.headers
-        )
+        response = requests.post(url=self.URL, data=json.dumps(data), headers=self.headers)
         return response.json()
