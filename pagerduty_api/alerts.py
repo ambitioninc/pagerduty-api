@@ -1,8 +1,5 @@
 import hashlib
-import json
 import logging
-
-import requests
 
 from .base import Resource
 from .exceptions import IncidentKeyException
@@ -20,31 +17,20 @@ class Alert(Resource):
     """
     An interface for interacting with PagerDuty alerts.
 
-    Initialized with the API key from settings
-
     Instantiate with a service API key (A unique id for the service you want to
     trigger an alert for)
 
     """
     URL = 'https://events.pagerduty.com/generic/2010-04-15/create_event.json'
 
-    def __init__(self, service_key, api_key=None, *args, **kwargs):
+    def __init__(self, service_key, *args, **kwargs):
         """
         :type service_key: str
         :param service_key: Service API Key is a unique ID generated in
                 PagerDuty for a Generic API Service
-
-        :type api_key: str
-        :param api_key: The API key. If no key is passed, the environment
-                variable PAGERDUTY_API_KEY is used.
-
-        :raises: If the api_key parameter is not present, and no environment
-            variable is present, a :class:`ConfigurationException <pagerduty_api.exceptions.ConfigurationException>`
-            is raised.
         """
         self.service_key = service_key
         self.incident_key = None
-        super(Alert, self).__init__(api_key=api_key, *args, **kwargs)
 
     def trigger(self, description, incident_key=None, client=None, client_url=None, details=None):
         """
@@ -103,8 +89,11 @@ class Alert(Resource):
         }
         LOG.info('Triggering PagerDuty incident {0}'.format(incident_key))
 
-        response = requests.post(url=self.URL, data=json.dumps(data), headers=self.headers)
-        return response.json()
+        return self._post(
+            url=self.URL,
+            data=data,
+            headers=self.headers
+        )
 
     def acknowledge(self, incident_key=None, description=None, details=None):
         """
@@ -153,8 +142,11 @@ class Alert(Resource):
         }
         LOG.info('Acknowledging PagerDuty incident {0}'.format(incident_key))
 
-        response = requests.post(url=self.URL, data=json.dumps(data), headers=self.headers)
-        return response.json()
+        return self._post(
+            url=self.URL,
+            data=data,
+            headers=self.headers
+        )
 
     def resolve(self, incident_key=None, description=None, details=None):
         """
@@ -203,5 +195,8 @@ class Alert(Resource):
         }
         LOG.info('Resolving PagerDuty incident {0}'.format(incident_key))
 
-        response = requests.post(url=self.URL, data=json.dumps(data), headers=self.headers)
-        return response.json()
+        return self._post(
+            url=self.URL,
+            data=data,
+            headers=self.headers
+        )
