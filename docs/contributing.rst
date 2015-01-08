@@ -60,8 +60,7 @@ Building the docs
 When in the project directory::
 
     $ pip install -r requirements/docs.txt
-    $ pip uninstall -y pagerduty-api && python setup.py install
-    $ cd docs && make html
+    $ python setup.py build_sphinx
     $ open docs/_build/html/index.html
 
 Release Checklist
@@ -69,10 +68,13 @@ Release Checklist
 
 Before a new release, please go through the following checklist:
 
-* Add a release note in docs/release_notes.rst
 * Bump version in pagerduty_api/version.py
+* Add a release note in docs/release_notes.rst
 * Git tag the version
-* Upload to pypi
+* Upload to pypi::
+
+    pip install wheel
+    python setup.py sdist bdist_wheel upload
 
 Vulnerability Reporting
 -----------------------

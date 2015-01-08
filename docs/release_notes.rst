@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+v0.3
+----
+``PAGERDUTY_API_KEY`` is no longer required for the ``Alert()`` object
+
 v0.2
 ----
 This version fixes interaction with PagerDuty's Events API.
