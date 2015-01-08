@@ -1,20 +1,29 @@
 .. image:: https://travis-ci.org/ambitioninc/pagerduty-api.png
    :target: https://travis-ci.org/ambitioninc/pagerduty-api
 
+.. image:: https://coveralls.io/repos/ambitioninc/pagerduty-api/badge.png
+    :target: https://coveralls.io/r/ambitioninc/pagerduty-api
+
+.. image:: https://pypip.in/v/pagerduty-api/badge.png
+    :target: https://crate.io/packages/pagerduty-api/
+    :alt: Latest PyPI version
+
+.. image:: https://pypip.in/d/pagerduty-api/badge.png
+    :target: https://crate.io/packages/pagerduty-api/
+    :alt: Number of PyPI downloads
+
 
 pagerduty-api
-===============
+=============
 pagerduty-api is a package for easily interacting with PagerDuty's API.
 
 Why?
 ----
-
 There are several other libraries interacting with the PagerDuty API, however none of them include
 tests and documentation.
 
 Installation
 ------------
-
 To install the latest release, type::
 
     pip install pagerduty-api
@@ -32,7 +41,6 @@ Requirements
 
 Documentation
 -------------
-
 Full documentation is available at http://pagerduty-api.readthedocs.org
 
 License

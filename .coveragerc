@@ -1,3 +1,6 @@
+[run]
+omit =
+    pagerduty_api/version.py
 [report]
 exclude_lines =
     # Have to re-enable the standard pragma

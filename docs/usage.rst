@@ -5,19 +5,6 @@ Configuring Alerts
 ------------------
 Alerts has an environment variable will need to configure before using.
 
-PAGERDUTY_API_KEY
-~~~~~~~~~~~~~~~~~
-
-This is the API access key for authenticating to PagerDuty. This defaults to
-the environment variable ``PAGERDUTY_API_KEY`` if it is present. See
-`PagerDuty's docs on authentication`_ for more information.
-
-.. _PagerDuty's docs on authentication: http://developer.pagerduty.com/documentation/rest/authentication
-
-.. code-block:: bash
-
-    $ export PAGERDUTY_API_KEY="wieZvi9AY3uCj6zaQPZX"
-
 Using Alerts
 ------------
 ``pagerduty_api`` comes with an interface for PagerDuty called ``Alert``. All an

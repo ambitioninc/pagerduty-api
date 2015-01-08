@@ -22,14 +22,14 @@ class PagerDutyAlertTests(unittest.TestCase):
 
         self.incident_key = '/alert/110'
 
-        self.alert = Alert(service_key=self.service_key, api_key=DUMMY_API_KEY)
+        self.alert = Alert(service_key=self.service_key)
 
     @patch.object(requests, 'post')
     def test_trigger_assigns_incident_key(self, mock_post):
         """
         Test triggering an alert without an incident_key sets one for the alert
         """
-        alert = Alert(service_key=self.service_key, api_key=DUMMY_API_KEY)
+        alert = Alert(service_key=self.service_key)
 
         self.assertIsNone(alert.incident_key)
 
@@ -63,7 +63,7 @@ class PagerDutyAlertTests(unittest.TestCase):
                 'client': 'apple_0033c42e190872c508666ab6acbbd2e7',
                 'client_url': 'https://apple.ambition.com',
                 'details': {'some_key': 'some_value'},
-            }),
+            }, sort_keys=True),
             headers=self.alert.headers,
             url=self.alert.URL,
         )
@@ -88,7 +88,7 @@ class PagerDutyAlertTests(unittest.TestCase):
                 'incident_key': self.incident_key,
                 'description': 'No data received',
                 'details': {'some_key': 'some_value'},
-            }),
+            }, sort_keys=True),
             headers=self.alert.headers,
             url=self.alert.URL,
         )
@@ -98,7 +98,7 @@ class PagerDutyAlertTests(unittest.TestCase):
         """
         Test .acknowledge() raises an IncidentKeyException
         """
-        alert = Alert(service_key=self.service_key, api_key=DUMMY_API_KEY)
+        alert = Alert(service_key=self.service_key)
 
         # Call the method
         with self.assertRaises(IncidentKeyException):
@@ -127,7 +127,7 @@ class PagerDutyAlertTests(unittest.TestCase):
                 'incident_key': self.incident_key,
                 'description': 'No data received',
                 'details': {'some_key': 'some_value'},
-            }),
+            }, sort_keys=True),
             headers=self.alert.headers,
             url=self.alert.URL,
         )
@@ -137,7 +137,7 @@ class PagerDutyAlertTests(unittest.TestCase):
         """
         Test .resolve() raises an IncidentKeyException
         """
-        alert = Alert(service_key=self.service_key, api_key=DUMMY_API_KEY)
+        alert = Alert(service_key=self.service_key)
 
         # Call the method
         with self.assertRaises(IncidentKeyException):

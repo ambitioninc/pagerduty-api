@@ -1,11 +1,43 @@
+import json
 import os
 
-from pagerduty_api.exceptions import ConfigurationException
+import requests
+
+from pagerduty_api.exceptions import ConfigurationException, PagerDutyAPIServerException
 
 
 class Resource(object):
     """
     A base class for API resources
+    """
+    @property
+    def headers(self):
+        return {
+            'Content-type': 'application/json',
+        }
+
+    def _post(self, *args, **kwargs):
+        """
+        A wrapper for posting things. It will also json encode your 'data' parameter
+
+        :returns: The response of your post
+        :rtype: dict
+
+        :raises: This will raise a
+            :class:`PagerDutyAPIServerException<pagerduty_api.exceptions.PagerDutyAPIServerException>`
+            if there is an error from Pager Duty
+        """
+        if 'data' in kwargs:
+            kwargs['data'] = json.dumps(kwargs['data'], sort_keys=True)
+        response = requests.post(*args, **kwargs)
+        if not response.ok:
+            raise PagerDutyAPIServerException('{}: {}'.format(response.status_code, response.text))
+        return response.json()
+
+
+class AuthorizedResource(object):
+    """
+    A base class for authorized API resources
     """
     def __init__(self, api_key=None, *args, **kwargs):
         """
