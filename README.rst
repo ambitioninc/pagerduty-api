@@ -5,11 +5,11 @@
     :target: https://coveralls.io/r/ambitioninc/pagerduty-api
 
 .. image:: https://pypip.in/v/pagerduty-api/badge.png
-    :target: https://pypi.python.org/pypi/newrelic-api
+    :target: https://pypi.python.org/pypi/pagerduty-api
     :alt: Latest PyPI version
 
 .. image:: https://pypip.in/d/pagerduty-api/badge.png
-    :target: https://pypi.python.org/pypi/newrelic-api
+    :target: https://pypi.python.org/pypi/pagerduty-api
     :alt: Number of PyPI downloads
 
 
