@@ -5,6 +5,12 @@ import re
 from setuptools import setup, find_packages
 
 
+import sys
+if 'sdist' in sys.argv and sys.version_info < (2, 7, 9, 'final', 0):
+    import os
+    del os.link
+
+
 def get_version():
     """
     Extracts the version number from the version.py file.
