@@ -4,11 +4,11 @@
 .. image:: https://coveralls.io/repos/ambitioninc/pagerduty-api/badge.png
     :target: https://coveralls.io/r/ambitioninc/pagerduty-api
 
-.. image:: https://pypip.in/v/pagerduty-api/badge.png
+.. image:: https://img.shields.io/pypi/v/pagerduty-api.svg
     :target: https://pypi.python.org/pypi/pagerduty-api
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/pagerduty-api/badge.png
+.. image:: https://img.shields.io/pypi/dm/pagerduty-api.svg
     :target: https://pypi.python.org/pypi/pagerduty-api
     :alt: Number of PyPI downloads
 
