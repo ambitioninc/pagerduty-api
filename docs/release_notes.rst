@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+v0.5
+----
+* Read the docs config v2
+
 v0.3
 ----
 ``PAGERDUTY_API_KEY`` is no longer required for the ``Alert()`` object
