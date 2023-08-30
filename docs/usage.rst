@@ -1,9 +1,6 @@
 Usage
 =====
 
-Configuring Alerts
-------------------
-Alerts has an environment variable will need to configure before using.
 
 Using Alerts
 ------------
@@ -19,7 +16,7 @@ unique ID generated in PagerDuty for a Generic API Service.
     
 
 Trigger Alert
-~~~~~~~~~~~~~
+-------------
 To trigger an alert, use ``.trigger()`` on the interface. If you don't pass in an
 incident_key, one will be computed as the md5 hash of the description
 
@@ -37,7 +34,7 @@ incident_key, one will be computed as the md5 hash of the description
     )
 
 Acknowledge Alert
-~~~~~~~~~~~~~~~~~
+-----------------
 To acknowledge an alert, use ``.acknowledge()`` on the interface. If you created
 this alert with ``.trigger()``, you won't need to provide an ``incident_key``.
 
@@ -53,7 +50,7 @@ this alert with ``.trigger()``, you won't need to provide an ``incident_key``.
     )
 
 Resolve Alert
-~~~~~~~~~~~~~
+-------------
 To resolve an alert, use ``.resolve()`` on the interface. If you created
 this alert with ``.trigger()``, you won't need to provide an ``incident_key``.
 
